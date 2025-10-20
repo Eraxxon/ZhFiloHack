@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  gap: 16px;
+  padding-block: 32px;
+}
+
+.sideBySide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .sideBySide { grid-template-columns: 1fr; }
+}
+

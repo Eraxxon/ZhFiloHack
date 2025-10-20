@@ -1,0 +1,230 @@
+/* Обертка для карточки и панелей */
+.wrapper {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+.card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px 0 0 14px;
+  padding: 16px;
+  position: relative;
+}
+
+.statusIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.statusIcon.green { background: #d1fae5; color: #10b981; }
+.statusIcon.yellow { background: #fef3c7; color: #f59e0b; }
+.statusIcon.red { background: #fee2e2; color: #ef4444; }
+
+.name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111827;
+  margin-bottom: 10px;
+  padding-right: 36px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.label { color: #6b7280; font-weight: 500; }
+.value { font-weight: 700; color: #111827; }
+
+.barWrap {
+  margin-top: 8px;
+}
+
+.barBg {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  width: 0%;
+  transition: width 300ms ease;
+  border-radius: 999px;
+}
+
+.barFill.green { background: linear-gradient(90deg, #10b981, #22c55e); }
+.barFill.yellow { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.barFill.red { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+/* Серая кнопка-панель с галочкой */
+.toggleBtn {
+  width: 40px;
+  min-height: 100%;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-radius: 0 14px 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #6b7280;
+  padding: 0;
+
+  &:hover:not(:disabled) {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .material-icons {
+    font-size: 24px;
+  }
+}
+
+/* Сообщение об ошибке над панелью */
+.errorMessage {
+  position: absolute;
+  top: -48px;
+  right: -210px;
+  width: 190px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 11;
+  animation: errorSlideIn 0.3s ease;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Выдвижная панель редактирования */
+.editPanel {
+  position: absolute;
+  top: 0;
+  right: -210px;
+  width: 190px;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  animation: slideIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.editContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  justify-content: center;
+}
+
+.editLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.editInput {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  }
+
+  &:disabled {
+    background: #f3f4f6;
+    cursor: not-allowed;
+  }
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+  background: #fef2f2;
+  
+  &:focus {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1) !important;
+  }
+}
+
+.saveBtn {
+  padding: 8px 14px;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: #2563eb;
+  }
+
+  &:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+

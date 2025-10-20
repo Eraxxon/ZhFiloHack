@@ -1,0 +1,47 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
+
+.title { font-weight: 600; color: #111827; }
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f1f5ff;
+  color: #3b82f6;
+  display: grid;
+  place-items: center;
+}
+
+.percent {
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.barWrap {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+.barBg {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #22c55e);
+  width: 0%;
+  transition: width 300ms ease;
+}
+

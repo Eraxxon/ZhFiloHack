@@ -8,11 +8,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('authToken');
-  if (token) {
-    config.headers = {
-      ...config.headers,
-      Authorization: `JWT ${token}`
-    };
+  if (token && config.headers) {
+    config.headers.Authorization = `JWT ${token}`;
   }
   return config;
 });

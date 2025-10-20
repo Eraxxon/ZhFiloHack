@@ -30,18 +30,18 @@ export default defineConfig(({ mode }) => {
         '@': '/src'
       }
     },
-  server: {
-    port: 3000,
-    strictPort: true,
-    proxy: {
-      '/api': {
-        target: 'http://91.186.196.211:3000',
-        changeOrigin: true,
-        secure: false,
-        ws: true
+    server: {
+      port: 3000,
+      strictPort: true,
+      proxy: {
+        '/api': {
+          target: 'http://91.186.196.211:3000',
+          changeOrigin: true,
+          secure: false,
+          ws: true
+        }
       }
     }
-  }
   };
 });
 
